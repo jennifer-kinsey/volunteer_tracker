@@ -1,25 +1,23 @@
 <h1>All My Projects</h1>
 <hr>
 <h2>Create a new project:</h2>
-<hr>
-<form action="/lists" method="post">
+<form action="/projects" method="post">
   <label for="project_name" name="project_name">Project Name:</label>
   <input type="text" name="project_name" id="project_name">
-  <button type="submit">Add Project</button>
+  <button type="submit" class="btn btn-default">Add Project</button>
 </form>
-
+<hr>
 <h2> Add volunteers to a project:</h2>
 <hr>
 <!-- content here -->
 
 <h2>Your Current Projects:</h2>
-<hr>
 <% if @projects.any? %>
-  <h4>Click on Projects to see all volunteers</h4>
+  <h4>Click on links to see all project volunteers and modify your projects</h4>
 
   <% @projects.each do |project| %>
-    <h6><a href="#"><%=project.project_name%></a></h6>
+    <h5><a href="/projects/<%=project.id%>"><%=project.project_name%></a></h5>
   <% end %>
 <% else %>
-  <h6>There are no projects yet!</h6>
+  <h5>There are no projects yet!</h5>
 <% end %>

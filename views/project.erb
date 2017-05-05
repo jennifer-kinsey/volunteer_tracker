@@ -1,0 +1,20 @@
+<h1><%= @project.project_name %></h1>
+<hr>
+
+<% if @project.get_volunteers.any? %>
+  <h3>Here are all the volunteers on your project:</h3>
+  <% @project.get_volunteers.each do |volunteer| %>
+    <h6><%= volunteer.volunteer_name%></h6>
+  <% end %>
+
+<% else %>
+  <h6>There are no volunteers on this project</h6>
+<% end %>
+
+<hr>
+<h2>Make mods to <%= @project.project_name %> Project</h2>
+
+<div class="container">
+  <p><a href="/projects/<%= @project.id %>/edit">Edit <%= @project.project_name%> Project's Name</a></p>
+  <p><a href="/">Return to Main Page</a>
+</div>
