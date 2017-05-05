@@ -2,7 +2,7 @@
 <hr>
 
 <% if @project.get_volunteers.any? %>
-  <h3>Here are all the volunteers on your project:</h3>
+  <h2>Volunteers on your project:</h2>
   <% @project.get_volunteers.each do |volunteer| %>
     <h6><%= volunteer.volunteer_name%></h6>
   <% end %>
@@ -18,3 +18,18 @@
   <p><a href="/projects/<%= @project.id %>/edit">Edit <%= @project.project_name%> Project's Name</a></p>
   <p><a href="/">Return to Main Page</a>
 </div>
+
+<hr>
+<h2> Remove volunteers from a project:</h2>
+<form action='/volunteers' method='post'>
+  <label for='project_id'>Select a Project</label>
+  <select id='project_id' name='project_id' type='text'>
+    <% @projects.each do |project| %>
+    <option value='<%= project.id%>'> <%= project.project_name %> </option>
+    <% end %>
+  </select>
+  <br>
+  <label for='volunteer_name'>Name of Volunteer</label>
+  <input id='volunteer_name' name='volunteer_name' type='text'>
+  <button type='submit' class='btn btn-default'>Remove</button>
+</form>

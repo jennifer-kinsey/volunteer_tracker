@@ -2,12 +2,12 @@ class Volunteer
 
   attr_reader(:volunteer_name, :project_id)
 
-  define_method(:initialize) do |attributes|
+  def initialize (attributes)
     @volunteer_name = attributes.fetch(:volunteer_name)
     @project_id = attributes.fetch(:project_id)
   end
 
-  define_singleton_method(:all) do
+  def self.all
     returned_volunteers = DB.exec('SELECT * FROM volunteers;')
     volunteers = []
     returned_volunteers.each() do  |vol|
@@ -18,12 +18,22 @@ class Volunteer
     volunteers
   end
 
-  define_method(:==) do |another_vol|
+  def ==(another_vol)
     self.volunteer_name.==(another_vol.volunteer_name).&(self.project_id().==(another_vol.project_id))
   end
 
-  define_method(:save) do
+  def save
     DB.exec("INSERT INTO volunteers (volunteer_name, project_id) VALUES ('#{@volunteer_name}', #{@project_id});")
+  end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+  end
+
+  def update(attributes)
+    @volunteer_name = attributes.fetch(:volunteer_name)
+    @id = self.id
+    DB.exec("UPDATE volunteers SET volunteer_name = '#{@volunteer_name} WHERE id= #{self.id}'")
   end
 
 end
