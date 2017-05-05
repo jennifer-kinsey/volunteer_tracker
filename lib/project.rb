@@ -1,12 +1,12 @@
 class Project
   attr_reader(:project_name, :id)
 
-  define_method(:initialize) do |attributes|
+  def initialize(attributes)
     @project_name = attributes.fetch(:project_name)
     @id = attributes.fetch(:id)
   end
 
-  define_singleton_method(:all) do
+  def self.all
     returned_projects = DB.exec("SELECT * FROM projects;")
     projects = []
     returned_projects.each() do |project|
@@ -22,8 +22,8 @@ class Project
     @id = result.first.fetch('id').to_i
   end
 
-  define_method(:==) do |another_project|
-    self.project_name.==(another_project.project_name).&(self.id().==(another_project.id()))
+  def ==(another_project)
+    self.project_name == another_project.project_name && self.id == another_project.id
   end
 
   def self.find(id)
@@ -36,6 +36,15 @@ class Project
     found_project
   end
 
-
+  def get_volunteers
+    list_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
+    volunteers.each do |volunteer|
+      volunteer_name = volunteer.fetch('volunteer_name')
+      project_id = volunteer.fetch('project_id').to_i
+      list_volunteers.push(Volunteer.new({volunteer_name: volunteer_name, project_id: project_id}))
+    end
+    list_volunteers
+  end
 
 end
