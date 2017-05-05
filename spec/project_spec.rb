@@ -52,12 +52,23 @@ end
   describe("#get_volunteers") do
     it("returns an array of volunteers for that project") do
       project1 = Project.new({project_name: "guide Link through his adventures", id: nil})
-      project1.save()
+      project1.save
       volunteer1 = Volunteer.new({volunteer_name: "Epona", project_id: project1.id()})
-      volunteer1.save()
+      volunteer1.save
       volunteer2 = Volunteer.new({volunteer_name: "Navi", project_id: project1.id()})
-      volunteer2.save()
+      volunteer2.save
       expect(project1.get_volunteers).to eq([volunteer1, volunteer2])
+    end
+  end
+
+  describe('#delete') do
+    it('lets you delete a project from the database') do
+      project1 = Project.new({project_name: "find the dungeon map", id: nil})
+      project1.save
+      project2 = Project.new({project_name: "find the dungeon compass", id: nil})
+      project2.save
+      project1.delete
+      expect(Project.all).to eq([project2])
     end
   end
 
