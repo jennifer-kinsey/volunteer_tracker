@@ -13,15 +13,15 @@ describe('adding a new project', {:type => :feature}) do
   end
 end
 
-# describe('viewing all of the lists', {:type => :feature}) do
-#   it('allows a user to see all of the lists that have been created') do
-#     list = List.new({:name => 'Epicodus Homework', :id => 1})
-#     list.save
-#     visit('/')
-#     expect(page).to have_content(list.name)
-#   end
-# end
-#
+describe('viewing all of the projects', {:type => :feature}) do
+  it('allows a user to see all of the projects that have been created') do
+    project1 = Project.new({:project_name => 'blast the Digdogger in the eye', :id => 1})
+    project1.save
+    visit('/')
+    expect(page).to have_content(project1.project_name)
+  end
+end
+
 # describe('seeing details for a single list', {:type => :feature}) do
 #   it('allows a user to click a list to see the tasks and details for it') do
 #     test_list = List.new({:name => 'School stuff', :id => 2})
