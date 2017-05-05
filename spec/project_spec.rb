@@ -39,4 +39,14 @@ end
     end
   end
 
+  describe('.find') do
+    it('returns a project by its ID') do
+      project1 = Project.new({project_name: "fill all bottles with fairies", id: nil})
+      project1.save
+      project2 = Project.new({project_name: "collect 4 heart pieces", id: nil})
+      project2.save
+      expect(Project.find(project2.id)).to eq(project2)
+    end
+  end
+
 end
