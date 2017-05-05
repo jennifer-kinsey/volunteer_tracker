@@ -4,7 +4,7 @@ Allows control over creating, modifying, and deleting ongoing projects and assoc
 
 ### Prerequisites
 
-Web browser
+Web browser, terminal
 Examples: Chrome, Safari
 
 Ruby 2.3.1
@@ -13,20 +13,28 @@ Bundler
 ### Installing
 
 1) Create a SQL Database for this project:
-Run 'psql' in your terminal and then create the following databases and tables by doing the commmands below:
+Run 'postgres' in terminal.
+Run 'psql' in another tab in your terminal and then create the following databases and tables by doing the commmands below:
+```
+CREATE DATABASE volunteer_tracker;
+\c volunteer_tracker;
+CREATE TABLE projects (id serial PRIMARY KEY, project_name varchar);
+CREATE TABLE volunteers (id serial PRIMARY KEY, volunteer_name varchar, project_id int);
+CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;
+```
 
-* Guest=# CREATE DATABASE volunteer_tracker;
+2) Clone this repository to your machine.
 
-* Guest=# \c volunteer_tracker;
+```
+	$ git clone https://github.com/jennifer-kinsey/volunteer_tracker.git
+```
 
-* volunteer_tracker=# CREATE TABLE projects (id serial PRIMARY KEY, project_name varchar);
+ Navigate to the file path in your terminal, and run 'app.rb' by running command:
+```
+$ruby app.rb
+```
 
-* volunteer_tracker=# CREATE TABLE volunteers (id serial PRIMARY KEY, volunteer_name varchar, project_id int);
-
-* volunteer_tracker=# CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;
-
-
-2) Clone this repository to your machine, navigate to the file path in your terminal, and run 'app.rb' by typing '$ruby app.rb'. If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browser. The standard localhost for Sinatra is port 4567
+  If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browser. In your Chrome, or inferior browser, go to `localhost:4567`
 
 ## Built With
 
@@ -50,6 +58,7 @@ Run 'psql' in your terminal and then create the following databases and tables b
 |clicks on modify/delete volunteer from volunteer page | individual goes to volunteer modification page | user sees options to delete or modify name of volunteer|
 |user is on the volunteer modification page | user types in different volunteer name | user taken back to volunteer page with updated volunteer name|
 |user is on the volunteer modification page | user clicks button to delete the volunteer | volunteer is deleted|
+|user is on homepage and wants to add volunteer to a project|clicks on projects, types in volunteer name|volunteer is added to a specific project|
 
 ## Authors
 
