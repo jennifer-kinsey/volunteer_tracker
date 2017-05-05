@@ -7,6 +7,20 @@ describe(Volunteer) do
     end
   end
 
+  describe('#volunteer_name') do
+    it('lets you give it a volunteer name') do
+      test_vol = Volunteer.new({:volunteer_name => 'Ganon', :project_id => 1})
+      expect(test_vol.volunteer_name).to eq('Ganon')
+    end
+  end
+
+  describe('#project_id') do
+    it('lets you give it a project id') do
+      test_vol = Volunteer.new({:volunteer_name => 'Impa', :project_id => 1})
+      expect(test_vol.project_id).to eq(1)
+    end
+  end
+
   describe("#==") do
     it("is the same task if it has the same volunteer name and project id") do
       vol1 = Volunteer.new({:volunteer_name => "Link", :project_id => 1})
@@ -22,5 +36,7 @@ describe(Volunteer) do
       expect(Volunteer.all).to eq([test_vol])
     end
   end
+
+
 
 end
