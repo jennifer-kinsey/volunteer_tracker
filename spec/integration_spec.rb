@@ -28,6 +28,7 @@ describe('seeing details for a single project', {:type => :feature}) do
     project1.save
     visit('/')
     click_link(project1.project_name)
+    expect(page).to have_content(project1.project_name)
     expect(page).to have_content('There are no volunteers on this project')
   end
 end

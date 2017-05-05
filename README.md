@@ -41,7 +41,15 @@ Run 'psql' in your terminal and then create the following databases and tables b
 
 | behavior |  input   |  output  |
 |----------|:--------:|:--------:|
-<!--SPECS GO HERE-->
+|goes to homepage| User visits homepage|Can See all active volunteers, all active projects, and add a volunteer to a project|
+|clicks on individual project | individual goes to the project page | individual sees the details of the project|
+|clicks on modify/delete project from project page | individual goes to project modification page | user sees options to delete or modify name of project|
+|user is on the project modification page | user types in different project name | user taken back to project page with updated project name|
+|user is on the project modification page | user clicks button to delete the project | project is deleted|
+|user clicks on the individual volunteer link | user taken to volunteer page | user can see ability to delete or modify user|
+|clicks on modify/delete volunteer from volunteer page | individual goes to volunteer modification page | user sees options to delete or modify name of volunteer|
+|user is on the volunteer modification page | user types in different volunteer name | user taken back to volunteer page with updated volunteer name|
+|user is on the volunteer modification page | user clicks button to delete the volunteer | volunteer is deleted|
 
 ## Authors
 
@@ -49,4 +57,4 @@ Jennifer Kinsey
 
 ## License
 
-Copyright © 2017 <!--YOUR NAME HERE-->
+Copyright © 2017 Jennifer Kinsey

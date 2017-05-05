@@ -34,3 +34,15 @@
   <h5>There are no projects yet!</h5>
 <% end %>
 <hr>
+
+<h2>Your Current Volunteers:</h2>
+<% if @volunteers.any? %>
+  <h4>Click on links to modify your volunteers</h4>
+
+  <% @volunteers.each do |volunteer| %>
+    <h5><a href='/volunteers/<%=volunteer.project_id%>'><%=volunteer.volunteer_name%></a></h5>
+  <% end %>
+<% else %>
+  <h5>There are no volunteers yet!</h5>
+<% end %>
+<hr>
