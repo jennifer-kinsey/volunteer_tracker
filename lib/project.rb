@@ -1,9 +1,20 @@
-# example ruby code
+class Project
+  attr_reader(:project_name, :id)
 
-# class Palindrome
+  define_method(:initialize) do |attributes|
+    @project_name = attributes.fetch(:project_name)
+    @id = attributes.fetch(:id)
+  end
 
-#   def is_word?(user_input)
-#     user_input.match?(/[aeiouy]+/i)
-#   end
-
-# end
+  define_singleton_method(:all) do
+    returned_projects = DB.exec("SELECT * FROM projects;")
+    projects = []
+    returned_projects.each() do |project|
+      name = project.fetch("name")
+      project = project.fetch("id").to_i()
+      projects.push(Project.new({:project_name => project_name, :id => id}))
+    end
+    projects
+  end
+  
+end
