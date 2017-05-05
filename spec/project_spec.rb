@@ -8,6 +8,21 @@ describe(Project) do
     end
   end
 
+  describe("#project_name") do
+  it("returns the project name") do
+    project1 = Project.new({project_name: "catch beetles for Beedle", id: nil})
+    expect(project1.project_name).to eq("catch beetles for Beedle")
+  end
+end
+
+describe("#id") do
+  it("sets the project ID when you save it") do
+    project = Project.new({project_name: "get 500 rupees", :id => nil})
+    project.save()
+    expect(project.id()).to(be_an_instance_of(Fixnum))
+  end
+end
+
   describe('#save') do
     it('saves the projects to the database') do
       project1 = Project.new({project_name: "take over Hyrule", id: nil})
