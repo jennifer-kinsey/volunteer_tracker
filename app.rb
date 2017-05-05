@@ -8,5 +8,6 @@ require('pg')
 DB = PG.connect({:dbname => 'volunteer_tracker'})
 
 get('/') do
+  @projects = Project.all
   erb(:index)
 end
