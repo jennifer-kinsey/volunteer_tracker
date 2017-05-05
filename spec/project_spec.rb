@@ -70,6 +70,26 @@ end
       project1.delete
       expect(Project.all).to eq([project2])
     end
+
+    it('also deletes the volunteers from the deleted project') do
+      project1 = Project.new({project_name: "get milk from Lon Lon Ranch", id: nil})
+      project1.save
+      volunteer1 = Volunteer.new({volunteer_name: "Malon", project_id: project1.id})
+      volunteer1.save
+      volunteer2 = Volunteer.new({volunteer_name: "Talon", project_id: project1.id})
+      volunteer2.save
+      project1.delete
+      expect(Volunteer.all).to eq([])
+    end
+  end
+
+  describe('#update') do
+    it('updates the project name') do
+      project1 = Project.new({project_name: "learn the Song of Time on Ocarina", id: nil})
+      project1.save
+      project1.update({project_name: "learn the Song of Storms on Ocarina"})
+      expect(project1.project_name).to eq("learn the Song of Storms on Ocarina")
+    end
   end
 
 end
