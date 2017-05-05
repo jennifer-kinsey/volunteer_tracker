@@ -1,19 +1,9 @@
-require 'volunteer_tracker'
-require 'rspec'
-require 'pry'
+require 'spec_helper'
 
-
-# example project spec
-
-# describe 'Palindrome#isWord?' do
-#   let(:word) { Palindrome.new }
-
-#   it 'returns true if the word has at least one vowel' do
-#     expect(word.is_word?('word')).to eq true
-#   end
-
-#   it 'returns false if the word does not have a vowel' do
-#     expect(word.is_word?('wrd')).to eq false
-#   end
-
-# end
+describe(Volunteer) do
+  describe('.all') do
+    it('is empty at first') do
+      expect(Volunteer.all).to eq([])
+    end
+  end
+end
