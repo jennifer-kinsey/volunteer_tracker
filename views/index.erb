@@ -2,7 +2,11 @@
 <hr>
 <h2>Create a new project:</h2>
 <hr>
-<!-- content here -->
+<form action="/lists" method="post">
+  <label for="project_name" name="project_name">Project Name:</label>
+  <input type="text" name="project_name" id="project_name">
+  <button type="submit">Add Project</button>
+</form>
 
 <h2> Add volunteers to a project:</h2>
 <hr>
@@ -14,7 +18,7 @@
   <h4>Click on Projects to see all volunteers</h4>
 
   <% @projects.each do |project| %>
-    <h6><a href="#"><% project.project_name%></a></h6>
+    <h6><a href="#"><%=project.project_name%></a></h6>
   <% end %>
 <% else %>
   <h6>There are no projects yet!</h6>
