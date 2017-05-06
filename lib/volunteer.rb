@@ -23,7 +23,7 @@ class Volunteer
   end
 
   def save
-    DB.exec("INSERT INTO volunteers (volunteer_name, project_id) VALUES ('#{@volunteer_name}', #{@project_id} RETURNING id);")
+    DB.exec("INSERT INTO volunteers (volunteer_name, project_id) VALUES ('#{@volunteer_name}', #{@project_id});")
   end
 
   def delete

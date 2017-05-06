@@ -38,7 +38,7 @@ class Project
 
   def get_volunteers
     list_volunteers = []
-    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.project_id};")
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
     volunteers.each do |volunteer|
       volunteer_name = volunteer.fetch('volunteer_name')
       project_id = volunteer.fetch('project_id').to_i
@@ -48,7 +48,7 @@ class Project
   end
 
   def delete
-    DB.exec("DELETE FROM volunteers WHERE project_id = #{self.project_id};")
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{self.id};")
     DB.exec("DELETE FROM projects WHERE id = #{self.id};")
   end
 
