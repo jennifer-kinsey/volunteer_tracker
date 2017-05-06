@@ -23,23 +23,23 @@ class Volunteer
   end
 
   def save
-    DB.exec("INSERT INTO volunteers (volunteer_name, project_id) VALUES ('#{@volunteer_name}', #{@project_id});")
+    DB.exec("INSERT INTO volunteers (volunteer_name, project_id) VALUES ('#{@volunteer_name}', #{@project_id} RETURNING id);")
   end
 
   def delete
-    DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id};")
   end
 
   def update(attributes)
     @volunteer_name = attributes.fetch(:volunteer_name)
-    @project_id = attributes.fetch(:project_id)
-    DB.exec("UPDATE volunteers SET volunteer_name = '#{@volunteer_name} WHERE project_id= #{@project_id}'")
+    @id = self_id
+    DB.exec("UPDATE volunteers SET volunteer_name = '#{@volunteer_name}' WHERE id= #{@id};")
   end
 
-  def self.find(project_id)
+  def self.find(id)
     found_volunteer = nil
     Volunteer.all.each do |volunteer|
-      if volunteer.project_id == project_id
+      if volunteer.id == id
         found_volunteer = volunteer
       end
     end

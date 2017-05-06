@@ -65,6 +65,8 @@ post('/volunteers') do
   volunteer = Volunteer.new({volunteer_name: volunteer_name, project_id: project_id})
   volunteer.save
   @project = Project.find(project_id)
+  @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:index)
 end
 
@@ -94,9 +96,9 @@ end
 
 # delete the namne of the volunteer, go home
 delete('/volunteers/:id') do
-  volunteer_name = params.fetch('volunteer_name')
-  project_id = params.fetch('project_id').to_i
-  @volunteer = Volunteer.find(params.fetch('id').to_i)
-  @volunteer.delete({volunteer_name: volunteer_name, project_id: project_id})
+  @volunteer = Volunteer.find(params.fetch('project_id').to_i)
+  @volunteer.delete
+  @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:index)
 end

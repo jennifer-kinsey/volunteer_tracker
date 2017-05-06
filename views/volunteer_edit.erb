@@ -8,11 +8,14 @@
 
   <button type="submit" class="btn btn-success" name="project_id" value="#{@volunteer.project_id}">Update</button>
 </form>
-
+<br>
+<br>
 <form action="/volunteers/<%= @volunteer.project_id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <br>
-  <br>
+
   <label for="delete">Delete <%=@volunteer.volunteer_name %>:</label>
-  <button type="submit" class="btn btn-danger">Delete volunteer</button>
+  <input id='volunteer_name' name='volunteer_name' type='hidden' value='<%= @volunteer.volunteer_name %>'>
+   <%= "
+   <button type='submit' name='project_id' value='#{@volunteer.project_id}' class='btn btn-danger'>Delete volunteer </button>
+   "%>
 </form>

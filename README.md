@@ -26,7 +26,7 @@ CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;
 2) Clone this repository to your machine.
 
 ```
-	$ git clone https://github.com/jennifer-kinsey/volunteer_tracker.git
+$ git clone https://github.com/jennifer-kinsey/volunteer_tracker.git
 ```
 
  Navigate to the file path in your terminal, and run 'app.rb' by running command:
