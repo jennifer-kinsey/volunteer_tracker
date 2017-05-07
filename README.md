@@ -1,6 +1,8 @@
 # Volunteer Tracker
 
-Allows control over creating, modifying, and deleting ongoing projects and associated volunteers with that project.
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=plastic)](https://github.com/jennifer-kinsey/volunteer_tracker)
+Allows an end user the ability to create, modify, and delete ongoing projects and associated volunteers with that project.
+
 
 ### Prerequisites
 
