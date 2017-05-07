@@ -32,15 +32,15 @@ describe('seeing details for a single project', {:type => :feature}) do
     expect(page).to have_content('There are no volunteers on this project')
   end
 end
-#
-# describe('adding tasks to a list', {:type => :feature}) do
-#   it('allows a user to add a task to a list') do
-#     test_list = List.new({:name => 'School stuff', :id => 3})
-#     test_list.save()
-#     visit('/')
-#     select('School stuff', :from => 'list_id')
-#     fill_in('Description', {:with => 'learn SQL'})
-#     click_button('Add task')
-#     expect(page).to have_content('learn SQL')
-#   end
-# end
+
+describe('adding volunteers to a project', {:type => :feature}) do
+  it('allows a user to add a volunteer to a project') do
+    project1 = Project.new({project_name: 'Catch all the Cuccos', id: 3})
+    project1.save
+    visit('/')
+    select('Catch all the Cuccos', from: 'project_id')
+    fill_in('volunteer_name', {with: 'Link'})
+    click_button('Add')
+    expect(page).to have_content('Link')
+  end
+end
