@@ -88,7 +88,7 @@ end
 patch('/volunteers/:id') do
   volunteer_name = params.fetch('volunteer_name')
   id = params.fetch('id').to_i
-  @volunteer = Volunteer.find(params.fetch('project_id').to_i)
+  @volunteer = Volunteer.find(params.fetch('id').to_i)
   @volunteer.update({volunteer_name: volunteer_name})
   @volunteers = Volunteer.all
   erb(:volunteer)
@@ -96,7 +96,7 @@ end
 
 # delete the namne of the volunteer, go home
 delete('/volunteers/:id') do
-  @volunteer = Volunteer.find(params.fetch('project_id').to_i)
+  @volunteer = Volunteer.find(params.fetch('id').to_i)
   @volunteer.delete
   @projects = Project.all
   @volunteers = Volunteer.all

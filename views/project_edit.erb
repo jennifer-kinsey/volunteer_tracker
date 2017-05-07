@@ -6,11 +6,10 @@
   <input id="project_name" name="project_name" type="text">
   <button type="submit" class="btn btn-success">Update</button>
 </form>
-
+<br>
+<br>
 <form action="/projects/<%= @project.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <br>
-  <br>
   <label for="delete">Delete <%=@project.project_name %>:</label>
   <button type="submit" class="btn btn-danger">Delete project</button>
 </form>
