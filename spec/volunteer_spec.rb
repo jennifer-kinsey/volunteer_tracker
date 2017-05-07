@@ -28,10 +28,10 @@ describe(Volunteer) do
     end
   end
 
-  describe("#==") do
-    it("is the same task if it has the same volunteer name and project id") do
-      vol1 = Volunteer.new({volunteer_name: "Link", project_id: 1, id: 5})
-      vol2 = Volunteer.new({volunteer_name: "Link", project_id: 1, id: 5})
+  describe('#==') do
+    it('is the same task if it has the same volunteer name and project id') do
+      vol1 = Volunteer.new({volunteer_name: 'Link', project_id: 1, id: 5})
+      vol2 = Volunteer.new({volunteer_name: 'Link', project_id: 1, id: 5})
       expect(vol1).to(eq(vol2))
     end
   end
@@ -44,6 +44,24 @@ describe(Volunteer) do
     end
   end
 
+  describe('#delete') do
+    it('lets you delete a volunteer from the database') do
+      vol1 = Volunteer.new({volunteer_name: 'Nayru', project_id: 1, id: nil})
+      vol1.save
+      vol2 = Volunteer.new({volunteer_name: 'Farore', project_id: 1, id: nil})
+      vol2.save
+      vol1.delete
+      expect(Volunteer.all).to eq([vol2])
+    end
+  end
 
-
+  describe('#update') do
+    it('updates the volunteer name') do
+      vol1 = Volunteer.new({volunteer_name: 'Sheik', project_id: 1, id: nil})
+      vol1.save
+      vol1.update({volunteer_name: 'Zelda'})
+      expect(vol1.volunteer_name).to eq('Zelda')
+    end
+  end
+  
 end
