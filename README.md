@@ -35,6 +35,23 @@ $ruby app.rb
 ```
 
   If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browser. In your Chrome, or inferior browser, go to `localhost:4567`
+  
+3) Start with some Zelda-themed data (optional, fun). 
+
+While still in \c volunteer_tracker type in the following commands into your terminal:
+```
+INSERT INTO projects (project_name) VALUES ('Catch all the cuccoos') RETURNING id;
+INSERT INTO projects (project_name) VALUES ('Learn Song of Storms on Ocarina') RETURNING id;
+INSERT INTO projects (project_name) VALUES ('Catch a bunch of fairies and bottle them up') RETURNING id;
+INSERT INTO projects (project_name) VALUES ('Get the Master Sword') RETURNING id;
+INSERT INTO projects (project_name) VALUES ('Defeat Ganon') RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Tingle', 1) RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Sheik', 2) RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Great Fairie', 3) RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Link', 3) RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Great Deku Tree', 4) RETURNING id;
+INSERT INTO volunteers (volunteer_name, project_id) VALUES ('Zelda', 5) RETURNING id;
+```
 
 ## Built With
 
