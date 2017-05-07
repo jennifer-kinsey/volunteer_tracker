@@ -1,8 +1,13 @@
 # Volunteer Tracker
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=plastic)](https://github.com/jennifer-kinsey/volunteer_tracker)
-Allows an end user the ability to create, modify, and delete ongoing projects and associated volunteers with that project.
 
+Allows an end user the ability to create, modify, and delete ongoing projects and associated volunteers with that project.
+Or as I interpreted this, quests with characters.
+
+## Screenshot
+
+![screenshot](https://cloud.githubusercontent.com/assets/26371824/25777580/e6319c86-3295-11e7-9110-e2ce23ebeecd.png)
 
 ### Prerequisites
 
