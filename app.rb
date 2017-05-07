@@ -62,7 +62,7 @@ end
 post('/volunteers') do
   volunteer_name = params.fetch('volunteer_name')
   project_id = params.fetch('project_id').to_i
-  volunteer = Volunteer.new({volunteer_name: volunteer_name, project_id: project_id})
+  volunteer = Volunteer.new({volunteer_name: volunteer_name, project_id: project_id, id: nil})
   volunteer.save
   @project = Project.find(project_id)
   @projects = Project.all
@@ -87,7 +87,7 @@ end
 # update the name of the volunteer
 patch('/volunteers/:id') do
   volunteer_name = params.fetch('volunteer_name')
-  project_id = params.fetch('project_id')
+  id = params.fetch('id').to_i
   @volunteer = Volunteer.find(params.fetch('project_id').to_i)
   @volunteer.update({volunteer_name: volunteer_name})
   @volunteers = Volunteer.all
